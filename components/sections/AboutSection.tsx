@@ -13,12 +13,13 @@ export function AboutSection() {
           <h2 className="text-3xl font-bold tracking-tight text-white sm:text-5xl">
             Quem sou eu
           </h2>
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-neutral-300 sm:text-lg">
-            Desenvolvedor focado em resolver gargalos reais de performance e
-            infraestrutura. Atualmente graduando e envolvido em projetos pela
-            UEPB e IFPB. Minha abordagem une a lógica da engenharia elétrica
-            com a arquitetura de software escalável.
-          </p>
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-neutral-300 sm:text-lg">
+              Desenvolvedor focado em resolver gargalos reais de performance e
+              infraestrutura. Graduando em Telemática no IFPB, com ênfase em
+              infraestrutura de redes, e envolvido em projetos pela UEPB e
+              IFPB. Minha abordagem une redes e conectividade com a
+              arquitetura de software escalável.
+            </p>
         </div>
 
         {/* Coluna Direita (Foto) */}

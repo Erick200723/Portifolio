@@ -34,7 +34,15 @@ export function ElegantCarousel({
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // No mobile o toque dispara mouseenter sem mouseleave: a pausa por hover
+  // só vale para dispositivos com mouse de verdade.
+  const hoverCapable = useRef(false);
+  const touchStartX = useRef<number | null>(null);
   const total = slides.length;
+
+  useEffect(() => {
+    hoverCapable.current = window.matchMedia("(hover: hover)").matches;
+  }, []);
 
   const go = useCallback(
     (dir: number) => setIndex((i) => (i + dir + total) % total),
@@ -54,8 +62,19 @@ export function ElegantCarousel({
 
   return (
     <div
-      onMouseEnter={() => setPaused(true)}
+      onMouseEnter={() => {
+        if (hoverCapable.current) setPaused(true);
+      }}
       onMouseLeave={() => setPaused(false)}
+      onTouchStart={(e) => {
+        touchStartX.current = e.touches[0].clientX;
+      }}
+      onTouchEnd={(e) => {
+        if (touchStartX.current === null) return;
+        const dx = e.changedTouches[0].clientX - touchStartX.current;
+        touchStartX.current = null;
+        if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
+      }}
       className={cn(
         "relative w-full overflow-hidden rounded-2xl border border-white/10 bg-neutral-900/50 shadow-2xl",
         className
@@ -104,19 +123,19 @@ export function ElegantCarousel({
           </p>
         </div>
 
-        {/* Contador */}
-        <span className="absolute right-4 top-4 z-30 rounded-full border border-white/20 bg-black/60 px-3 py-1 font-mono text-[11px] font-semibold tracking-widest text-white backdrop-blur-md">
+        {/* Contador (oculto no mobile para leitura limpa) */}
+        <span className="absolute right-4 top-4 z-30 hidden rounded-full border border-white/20 bg-black/60 px-3 py-1 font-mono text-[11px] font-semibold tracking-widest text-white backdrop-blur-md sm:block">
           {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
         </span>
 
-        {/* Setas */}
+        {/* Setas (ocultas no mobile para leitura limpa) */}
         {total > 1 ? (
           <>
             <button
               type="button"
               aria-label="Slide anterior"
               onClick={() => go(-1)}
-              className="absolute left-3 top-1/2 z-30 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/50 text-white backdrop-blur-md transition-colors hover:bg-black/80"
+              className="absolute left-3 top-1/2 z-30 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/50 text-white backdrop-blur-md transition-colors hover:bg-black/80 sm:flex"
             >
               <ChevronLeft className="h-5 w-5" />
             </button>
@@ -124,7 +143,7 @@ export function ElegantCarousel({
               type="button"
               aria-label="Próximo slide"
               onClick={() => go(1)}
-              className="absolute right-3 top-1/2 z-30 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/50 text-white backdrop-blur-md transition-colors hover:bg-black/80"
+              className="absolute right-3 top-1/2 z-30 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/50 text-white backdrop-blur-md transition-colors hover:bg-black/80 sm:flex"
             >
               <ChevronRight className="h-5 w-5" />
             </button>
