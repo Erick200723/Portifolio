@@ -60,7 +60,7 @@ export function ScrollExpandMedia({
   const isVideo = mediaType === "video" || /\.(mp4|webm|mov)(\?|$)/i.test(mediaSrc);
 
   return (
-    <section ref={sectionRef} className={cn("relative h-[250vh] bg-[#0a0a0a]", className)}>
+    <section ref={sectionRef} className={cn("relative h-[250vh] bg-transparent", className)}>
       <div className="sticky top-0 flex h-screen flex-col overflow-hidden">
         {/* Media central que expande com o scroll */}
         <div className="relative flex flex-1 items-center justify-center px-4 pt-20">
@@ -112,25 +112,25 @@ export function ScrollExpandMedia({
             {/* Título sobre a mídia */}
             <motion.div
               style={{ opacity: titleOpacity, y: titleY }}
-              className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center"
+              className="absolute inset-0 mx-auto flex w-full flex-col items-center justify-center px-6 text-center"
             >
               {date ? (
-                <span className="mb-4 inline-flex items-center rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.25em] text-neutral-300 backdrop-blur-md">
+                <span className="mb-4 inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.25em] text-neutral-300 backdrop-blur-md">
                   {date}
                 </span>
               ) : null}
               {title ? (
-                <h1 className="max-w-4xl text-5xl font-bold leading-[1.05] tracking-tight text-white drop-shadow-2xl sm:text-7xl">
+                <h1 className="mx-auto max-w-4xl text-center text-5xl font-bold leading-[1.05] tracking-tight text-white drop-shadow-2xl sm:text-7xl">
                   {title}
                 </h1>
               ) : null}
               {scrollToExpand ? (
                 <motion.p
                   style={{ opacity: hintOpacity }}
-                  className="mt-8 flex flex-col items-center gap-3 text-sm font-medium uppercase tracking-[0.3em] text-neutral-400"
+                  className="mt-8 flex flex-col items-center justify-center gap-3 text-center text-sm font-medium uppercase tracking-[0.3em] text-neutral-400"
                 >
                   {scrollToExpand}
-                  <span className="block h-10 w-px animate-pulse bg-gradient-to-b from-white/70 to-transparent" />
+                  <span className="mx-auto block h-10 w-px animate-pulse bg-gradient-to-b from-white/70 to-transparent" />
                 </motion.p>
               ) : null}
             </motion.div>

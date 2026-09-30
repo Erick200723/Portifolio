@@ -98,7 +98,7 @@ export function Footer() {
             <p className="max-w-sm text-2xl font-bold leading-tight tracking-tight text-white sm:text-3xl">
               Pronto para escalar sua infraestrutura?
             </p>
-            <p className="max-w-sm text-sm leading-relaxed text-neutral-400">
+            <p className="max-w-sm text-sm leading-relaxed text-neutral-300">
               Vamos conversar sobre alta disponibilidade, tempo real e
               arquiteturas que aguentam o mundo real.
             </p>
@@ -108,10 +108,10 @@ export function Footer() {
             {footerLinks.map((section, index) => (
               <AnimatedContainer key={section.label} delay={0.1 + index * 0.1}>
                 <div className="mb-10 md:mb-0">
-                  <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500">
+                  <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-400">
                     {section.label}
                   </h3>
-                  <ul className="mt-4 space-y-2 text-sm text-neutral-400">
+                  <ul className="mt-4 space-y-2 text-sm text-neutral-300">
                     {section.links.map((link) => (
                       <li key={link.title}>
                         <a
@@ -143,9 +143,9 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="group flex flex-1 items-center justify-center gap-3 rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-4 text-sm font-medium text-neutral-200 transition-colors hover:border-white/25 hover:bg-white/[0.07] hover:text-white"
               >
-                <link.icon className="h-5 w-5 shrink-0 text-neutral-400 transition-colors group-hover:text-white" />
+                <link.icon className="h-5 w-5 shrink-0 text-neutral-300 transition-colors group-hover:text-white" />
                 <span className="flex flex-col items-start leading-tight sm:items-center">
-                  <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-neutral-500">
+                  <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-neutral-400">
                     {link.label}
                   </span>
                   <span className="max-w-[220px] truncate text-[13px]">
@@ -157,7 +157,7 @@ export function Footer() {
           </div>
         </AnimatedContainer>
 
-        <p className="mt-12 text-center text-xs uppercase tracking-[0.25em] text-neutral-600">
+        <p className="mt-12 text-center text-xs uppercase tracking-[0.25em] text-neutral-500">
           Erick Gabriel — {new Date().getFullYear()}
         </p>
       </div>

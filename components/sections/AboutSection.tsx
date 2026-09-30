@@ -7,13 +7,13 @@ export function AboutSection() {
       <div className="grid gap-10 md:grid-cols-2 md:gap-14">
         {/* Coluna Esquerda (Texto) */}
         <div className="flex flex-col justify-center">
-          <span className="mb-4 inline-flex w-fit items-center rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.25em] text-neutral-400">
+          <span className="mb-4 inline-flex w-fit items-center rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.25em] text-neutral-300">
             Sobre Mim
           </span>
           <h2 className="text-3xl font-bold tracking-tight text-white sm:text-5xl">
             Quem sou eu
           </h2>
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-neutral-400 sm:text-lg">
+          <p className="mt-6 max-w-xl text-base leading-relaxed text-neutral-300 sm:text-lg">
             Desenvolvedor focado em resolver gargalos reais de performance e
             infraestrutura. Atualmente graduando e envolvido em projetos pela
             UEPB e IFPB. Minha abordagem une a lógica da engenharia elétrica
@@ -32,7 +32,7 @@ export function AboutSection() {
 
           {/* Stack Técnica — Galeria visual de badges */}
           <div>
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-[0.25em] text-neutral-500">
+            <h3 className="mb-4 text-sm font-semibold uppercase tracking-[0.25em] text-neutral-400">
               Stack Técnica
             </h3>
             <div className="flex flex-col gap-4">

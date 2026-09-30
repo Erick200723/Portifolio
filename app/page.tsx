@@ -6,7 +6,7 @@ import { Footer } from "@/components/ui/footer-section";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#0a0a0a] text-neutral-100 antialiased">
+    <main className="min-h-screen bg-transparent text-neutral-100 antialiased">
       <HeroSection />
       <AboutSection />
       <ProjectsSection />

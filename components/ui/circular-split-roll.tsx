@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { Maximize2 } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -120,6 +121,8 @@ interface CircularSplitRollCompProps {
   gridImageClassName?: string;
   gridCardClassName?: string;
   gridTitleClassName?: string;
+  /** Chamado ao clicar/tocar na imagem de um item (abre lightbox, por ex.). */
+  onImageClick?: (item: CircularSplitRollItem) => void;
 }
 
 function CircularSplitRollComp({
@@ -159,6 +162,7 @@ function CircularSplitRollComp({
   gridImageClassName = "",
   gridCardClassName = "",
   gridTitleClassName = "",
+  onImageClick,
 }: CircularSplitRollCompProps) {
   const rootRef = useRef<HTMLElement | null>(null);
   const stickyRef = useRef<HTMLDivElement | null>(null);
@@ -421,11 +425,12 @@ function CircularSplitRollComp({
             }}
           >
             <div className="relative h-[78vh]">
-              {safeItems.map((item) => (
-                <div
-                  key={item.id}
-                  className="circular-scroll-showcase__right-item absolute left-1/2 top-1/2 ml-[calc(var(--css-card-width,210px)*-0.5)] mt-[calc(var(--css-card-height,210px)*-0.5)] h-(--css-card-height,210px) w-(--css-card-width,210px) origin-center opacity-0 will-change-[transform,opacity]"
-                >
+                {safeItems.map((item) => (
+                  <div
+                    key={item.id}
+                    onClick={() => onImageClick?.(item)}
+                    className={`circular-scroll-showcase__right-item absolute left-1/2 top-1/2 ml-[calc(var(--css-card-width,210px)*-0.5)] mt-[calc(var(--css-card-height,210px)*-0.5)] h-(--css-card-height,210px) w-(--css-card-width,210px) origin-center opacity-0 will-change-[transform,opacity]${onImageClick ? " cursor-pointer" : ""}`}
+                  >
                   <div className="relative h-full w-full overflow-hidden rounded-[18px] bg-neutral-900 shadow-[0_30px_60px_rgba(0,0,0,0.5),0_8px_20px_rgba(0,0,0,0.3)] ring-1 ring-white/10">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
@@ -447,18 +452,26 @@ function CircularSplitRollComp({
       >
         <div className="mx-auto grid w-full max-w-5xl grid-cols-3 gap-5 max-md:grid-cols-2 max-md:gap-4">
           {safeItems.map((item) => (
-            <article key={item.id} className={`w-full ${gridCardClassName}`}>
-              <div
-                className={`relative aspect-video w-full overflow-hidden rounded-[18px] bg-neutral-900 shadow-[0_18px_38px_rgba(0,0,0,0.4)] ring-1 ring-white/10 max-md:rounded-[14px] ${gridImageClassName}`}
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={item.image}
-                  alt={item.alt}
-                  className="absolute inset-0 block h-full w-full object-cover"
-                  draggable="false"
-                />
-              </div>
+              <article key={item.id} className={`w-full ${gridCardClassName}`}>
+                <button
+                  type="button"
+                  onClick={() => onImageClick?.(item)}
+                  aria-label={`Ampliar ${item.alt}`}
+                  className={`relative block aspect-video w-full overflow-hidden rounded-[18px] bg-neutral-900 shadow-[0_18px_38px_rgba(0,0,0,0.4)] ring-1 ring-white/10 max-md:rounded-[14px]${onImageClick ? " cursor-pointer" : ""} ${gridImageClassName}`}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={item.image}
+                    alt={item.alt}
+                    className="absolute inset-0 block h-full w-full object-cover"
+                    draggable="false"
+                  />
+                  {onImageClick ? (
+                    <span className="absolute bottom-2 right-2 z-10 flex h-7 w-7 items-center justify-center rounded-full border border-white/20 bg-black/60 text-white backdrop-blur-md">
+                      <Maximize2 className="h-3.5 w-3.5" />
+                    </span>
+                  ) : null}
+                </button>
 
               <h3
                 className={`mt-3 text-center text-[clamp(18px,4vw,30px)] font-medium leading-none tracking-[-0.04em] text-white max-md:mt-2 max-md:text-[clamp(16px,5vw,24px)] ${gridTitleClassName}`}

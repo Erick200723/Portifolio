@@ -12,7 +12,7 @@ export function HeroSection() {
         Engenharia de Software além do CRUD. Foco em Alta Disponibilidade,
         WebSockets e Multi-Tenant.
       </h2>
-      <p className="mt-4 max-w-3xl text-base leading-relaxed text-neutral-400 sm:text-lg">
+      <p className="mt-4 max-w-3xl text-base leading-relaxed text-neutral-300 sm:text-lg">
         Construo plataformas distribuídas que sobrevivem ao mundo real:
         tempo real, borda e escala.
       </p>

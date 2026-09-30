@@ -18,13 +18,13 @@ import {
 export function ProjectsSection() {
   return (
     <section id="projetos" className="mx-auto w-full max-w-6xl px-6 pb-24 sm:pb-32">
-      <span className="mb-4 inline-flex w-fit items-center rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.25em] text-neutral-400">
+      <span className="mb-4 inline-flex w-fit items-center rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.25em] text-neutral-300">
         Projetos
       </span>
       <h2 className="max-w-3xl text-3xl font-bold tracking-tight text-white sm:text-5xl">
         Projetos de Alta Complexidade
       </h2>
-      <p className="mt-4 max-w-2xl text-base leading-relaxed text-neutral-400 sm:text-lg">
+      <p className="mt-4 max-w-2xl text-base leading-relaxed text-neutral-300 sm:text-lg">
         Não faço apenas telas — projeto arquiteturas distribuídas que
         resolvem problemas reais de escala, tempo real e borda.
       </p>
@@ -40,7 +40,7 @@ export function ProjectsSection() {
             <h3 className="text-2xl font-bold tracking-tight text-white sm:text-4xl">
               Sofia IA - Gestão Distribuída Cloud-to-Edge
             </h3>
-            <p className="mt-4 text-base leading-relaxed text-neutral-400">
+            <p className="mt-4 text-base leading-relaxed text-neutral-300">
               Plataforma multi-tenant com WebSockets em tempo real, agente
               local em Rust (Tauri) para integração com impressoras térmicas
               e otimização extrema de CPU/RAM para Smart TVs legadas
@@ -90,7 +90,7 @@ export function ProjectsSection() {
           </div>
         </div>
         <div className="border-t border-white/10 bg-black/40 px-6 pb-8 pt-8 sm:px-10 sm:pb-10">
-          <p className="mb-4 text-center text-xs font-semibold uppercase tracking-[0.25em] text-neutral-500">
+          <p className="mb-4 text-center text-xs font-semibold uppercase tracking-[0.25em] text-neutral-400">
             Antes × Depois — painel legado vs SOFIA
           </p>
           <Compare
@@ -113,7 +113,7 @@ export function ProjectsSection() {
             <h3 className="text-2xl font-bold tracking-tight text-white sm:text-4xl">
               CINTEDI - Plataforma de Congresso Internacional
             </h3>
-            <p className="mt-4 text-base leading-relaxed text-neutral-400">
+            <p className="mt-4 text-base leading-relaxed text-neutral-300">
               Desenvolvimento e deploy de uma plataforma Fullstack para
               gestão de eventos acadêmicos, incluindo autenticação OTP,
               processamento de pagamentos, submissão e avaliação de artigos
@@ -172,13 +172,13 @@ export function ProjectsSection() {
               </div>
               <ArrowUpRight className="h-5 w-5 text-neutral-600 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-white" />
             </div>
-            <p className="mt-6 text-xs font-semibold uppercase tracking-[0.25em] text-neutral-500">
+            <p className="mt-6 text-xs font-semibold uppercase tracking-[0.25em] text-neutral-400">
               {project.problem}
             </p>
             <h3 className="mt-2 text-2xl font-bold tracking-tight text-white">
               {project.title}
             </h3>
-            <p className="mt-3 text-sm leading-relaxed text-neutral-400 sm:text-base">
+            <p className="mt-3 text-sm leading-relaxed text-neutral-300 sm:text-base">
               {project.description}
             </p>
             <div className="mt-6 flex flex-wrap gap-2">
